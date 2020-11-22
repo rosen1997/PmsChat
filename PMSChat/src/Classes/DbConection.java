@@ -1,19 +1,23 @@
 package Classes;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
 
 public class DbConection implements IDbConnection
 {
     private Connection conn = null;
-    private final String DB_URL = "jdbc:sqlserver://;servername=DESKTOP-JCRR398\\PROJECTSSERVER;databaseName=ChatAppDb;integratedSecurity=true;";
+    String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    private final String DB_URL = "jdbc:sqlserver://;servername=DESKTOP-JCRR398\\PROJECTSSERVER;databaseName=ChatAppDb;integratedSecurity=true;authenticationScheme=JavaKerberos";
 
     @Override
     public String TestServerConnection()
     {
         try
         {
+            DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
             conn = DriverManager.getConnection(DB_URL);
+
             if (conn != null) {
                 return "Db connection successful";
             }
@@ -23,7 +27,7 @@ public class DbConection implements IDbConnection
         {
             return "Db connection error: "+ ex.getMessage();
         }
-        return null;
+        return "Error";
     }
 
     @Override
@@ -36,44 +40,145 @@ public class DbConection implements IDbConnection
 
             rs = stmt.executeQuery("SELECT LoggedIn FROM Users WHERE Id = "+Id);
             while (rs.next()) {
-                String lastName = rs.getString("Lname");
-                System.out.println(lastName);
+                boolean loggedIn = rs.getBoolean("LoggedIn");
+                return loggedIn;
             }
         }
         catch (SQLException ex)
         {
-            return false;
+
         }
         return false;
     }
 
     @Override
-    public User LogIn(String email, String password) {
+    public User LogIn(String email, String password)
+    {
+        try
+        {
+            Statement stmt = conn.createStatement();
+            ResultSet rs;
+
+            rs = stmt.executeQuery("SELECT * FROM Users WHERE Email = "+email+" and Password = "+password);
+            while (rs.next()) {
+                return new User(rs.getInt("Id"),rs.getString("FirstName"),rs.getString("LastName"),rs.getString("Email"),rs.getBoolean("LoggedIn"));
+            }
+        }
+        catch (SQLException ex)
+        {
+
+        }
         return null;
     }
 
     @Override
-    public User Register(User user) {
+    public void SignOut(int Id)
+    {
+        try
+        {
+            Statement stmt = conn.createStatement();
+            ResultSet rs;
+
+            rs = stmt.executeQuery("UPDATE Users SET LoggedIn="+0+" WHERE Id="+Id);
+            conn.close();
+        }
+        catch (SQLException ex)
+        {
+
+        }
+    }
+
+    @Override
+    public void Register(User user)
+    {
+        try
+        {
+            Statement stmt = conn.createStatement();
+            ResultSet rs;
+
+            rs = stmt.executeQuery("INSERT INTO Users VALUES("+user.FirstName+","+user.LastName+","+user.Email+","+user.LoggedIn+","+user.Password+ ")");
+        }
+        catch (SQLException ex)
+        {
+
+        }
+    }
+
+    @Override
+    public void AddFriend(int userId, int friendId)
+    {
+        try
+        {
+            Statement stmt = conn.createStatement();
+            ResultSet rs;
+
+            rs = stmt.executeQuery("INSERT INTO FriendsList VALUES("+userId+","+friendId+ ")");
+        }
+        catch (SQLException ex)
+        {
+
+        }
+    }
+
+    @Override
+    public void RemoveFriend(int userId, int friendId)
+    {
+        try
+        {
+            Statement stmt = conn.createStatement();
+            ResultSet rs;
+
+            rs = stmt.executeQuery("DELETE FROM FriendsList WHERE UserId="+userId+" AND "+"FriendId= "+friendId);
+        }
+        catch (SQLException ex)
+        {
+
+        }
+    }
+
+    @Override
+    public List<User> GetFriends(int userId)
+    {
+        List<User> friends= new ArrayList<User>();
+
+        try
+        {
+            Statement stmt = conn.createStatement();
+            ResultSet rs;
+
+            rs = stmt.executeQuery("SELECT Users.Id, Users.FirstName, Users.LastName, Users.Email, Users.LoggedIn FROM FriendsList JOIN Users ON FriendsList.FriendId=Users.Id WHERE FriendsList.UserId="+userId);
+            while (rs.next()) {
+                friends.add(new User(rs.getInt("Id"),rs.getString("FirstName"),rs.getString("LastName"),rs.getString("Email"),rs.getBoolean("LoggedIn")));
+            }
+            return friends;
+        }
+        catch (SQLException ex)
+        {
+
+        }
         return null;
     }
 
     @Override
-    public void AddFriend(int userId, int friendId) {
+    public List<User> SearchUsers(String name)
+    {
+        List<User> friends= new ArrayList<User>();
 
-    }
+        try
+        {
+            Statement stmt = conn.createStatement();
+            ResultSet rs;
 
-    @Override
-    public void RemoveFriend(int userId, int friendId) {
+            rs = stmt.executeQuery("SELECT * FROM USERS WHERE FirstName="+name);
+            while (rs.next()) {
+                friends.add(new User(rs.getInt("Id"),rs.getString("FirstName"),rs.getString("LastName"),rs.getString("Email"),rs.getBoolean("LoggedIn")));
+            }
+            return friends;
+        }
+        catch (SQLException ex)
+        {
 
-    }
-
-    @Override
-    public List<User> GetFriends(int userId) {
-        return null;
-    }
-
-    @Override
-    public List<User> SearchUsers(String name) {
+        }
         return null;
     }
 }

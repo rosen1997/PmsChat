@@ -23,8 +23,6 @@ public class Main extends Application {
     public static void main(String[] args)
     {
         launch(args);
-        IDbConnection connection = new DbConection();
-        connection.TestServerConnection();
-        connection.IsUserLoggedIn(1);
+
     }
 }

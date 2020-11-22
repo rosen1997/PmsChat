@@ -7,7 +7,8 @@ public interface IDbConnection
     String TestServerConnection();
     boolean IsUserLoggedIn(int Id);
     User LogIn(String email, String password);
-    User Register(User user);
+    void Register(User user);
+    void SignOut(int Id);
     void AddFriend(int userId, int friendId);
     void RemoveFriend(int userId, int friendId);
     List<User> GetFriends(int userId);

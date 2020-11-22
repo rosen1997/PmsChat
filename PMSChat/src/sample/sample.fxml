@@ -1,8 +1,101 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
+<?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<GridPane fx:controller="sample.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <VBox alignment="CENTER" layoutX="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #310E37;">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/a7062be5b0c85463c8aed9e2b78cdb60.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" text="Welcome To" textFill="#aa9346">
+                     <font>
+                        <Font name="Ebrima Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" text="PMSCHAT" textFill="#aa9346">
+                     <font>
+                        <Font name="Impact" size="20.0" />
+                     </font>
+                  </Label>
+               </children></VBox>
+            <Pane fx:id="content_area" layoutX="400.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #FFF;">
+               <children>
+                  <Label alignment="CENTER" layoutX="14.0" layoutY="91.0" text="Welcome Back" textFill="#aa9346">
+                     <font>
+                        <Font name="Ebrima Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="14.0" layoutY="117.0" text="Sing in to continue" textFill="#aaa79d">
+                     <font>
+                        <Font name="Ebrima Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="139.0" layoutY="261.0" prefHeight="25.0" prefWidth="206.0" />
+                  <PasswordField layoutX="139.0" layoutY="307.0" prefHeight="25.0" prefWidth="206.0" />
+                  <Label alignment="CENTER" layoutX="59.0" layoutY="264.0" text="Email" textFill="#aaa79d">
+                     <font>
+                        <Font name="Ebrima" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="53.0" layoutY="310.0" text="Password" textFill="#aaa79d">
+                     <font>
+                        <Font name="Ebrima" size="14.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="50.0" layoutY="400.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="303.0" style="-fx-background-color: #310E37;" text="Login" textFill="#daae0e">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <ImageView fitHeight="69.0" fitWidth="137.0" layoutX="12.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/a7062be5b0c85463c8aed9e2b78cdb60.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" layoutX="142.0" layoutY="480.0" text="New User?" textFill="#aaa79d">
+                     <font>
+                        <Font name="Ebrima" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="pane" alignment="CENTER" layoutX="215.0" layoutY="475.0" onMouseClicked="#open_reg" prefHeight="20.0" prefWidth="69.0" text="Singup" textFill="#431746">
+                     <font>
+                        <Font name="Ebrima" size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
 </GridPane>

@@ -20,5 +20,15 @@ public class Controller {
         stage.setScene(new Scene(fxml));
         stage.show();
 
+
+    }
+
+
+    public void open_logedIn(MouseEvent mouseEvent) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("logedin.fxml"));
+        Parent fxml = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(fxml));
+        stage.show();
     }
 }

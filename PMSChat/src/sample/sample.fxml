@@ -67,7 +67,7 @@
                         <Font name="Ebrima" size="14.0" />
                      </font>
                   </Label>
-                  <Button layoutX="50.0" layoutY="400.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="303.0" style="-fx-background-color: #310E37;" text="Login" textFill="#daae0e">
+                  <Button layoutX="50.0" layoutY="400.0" mnemonicParsing="false" onMouseClicked="#open_logedIn" prefHeight="48.0" prefWidth="303.0" style="-fx-background-color: #310E37;" text="Login" textFill="#daae0e">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>

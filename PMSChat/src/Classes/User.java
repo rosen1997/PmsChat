@@ -17,4 +17,9 @@ public class User
         this.LoggedIn=loggedin;
         this.Email=email;
     }
+
+    @Override
+    public String toString() {
+        return this.FirstName+" "+this.LastName;
+    }
 }

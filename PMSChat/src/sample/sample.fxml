@@ -55,8 +55,8 @@
                         <Font name="Ebrima Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="139.0" layoutY="261.0" prefHeight="25.0" prefWidth="206.0" />
-                  <PasswordField layoutX="139.0" layoutY="307.0" prefHeight="25.0" prefWidth="206.0" />
+                  <TextField fx:id="emailField" layoutX="139.0" layoutY="261.0" prefHeight="25.0" prefWidth="206.0" />
+                  <PasswordField fx:id="passwordField" layoutX="139.0" layoutY="307.0" prefHeight="25.0" prefWidth="206.0" />
                   <Label alignment="CENTER" layoutX="59.0" layoutY="264.0" text="Email" textFill="#aaa79d">
                      <font>
                         <Font name="Ebrima" size="14.0" />
@@ -93,6 +93,8 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
+                  <Label fx:id="email_label" layoutX="141.0" layoutY="285.0" text="Label" textFill="#df3737" visible="false" />
+                  <Label fx:id="password_label" layoutX="141.0" layoutY="332.0" text="Label" textFill="#df3737" visible="false" />
                </children>
             </Pane>
          </children>

@@ -2,79 +2,43 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="747.0" prefWidth="714.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LogedIn">
+<AnchorPane prefHeight="678.0" prefWidth="758.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LogedIn">
    <children>
-      <VBox alignment="BOTTOM_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="358.0" style="-fx-background-color: F5F5F5;">
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="747.0" prefWidth="358.0" style="-fx-background-color: F5F5F5;">
          <children>
-            <AnchorPane prefHeight="262.0" prefWidth="303.0">
+            <AnchorPane prefHeight="262.0" prefWidth="303.0" style="-fx-background-color: #EAEAEA;">
                <children>
-                  <ImageView fitHeight="71.0" fitWidth="66.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="66.0" fitWidth="66.0" layoutX="89.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icons/womenIco.png" />
-                     </image>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </ImageView>
-                  <ImageView fitHeight="66.0" fitWidth="80.0" layoutX="7.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/chat.png" />
+                        <Image url="@../icons/139-1394223_we-purple-text-message-icon.png" />
                      </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fitHeight="66.0" fitWidth="58.0" layoutX="97.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="66.0" fitWidth="66.0" layoutX="180.0" layoutY="121.0" onMouseClicked="#open_contacts" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icons/Telephone.png" />
+                        <Image url="@../icons/user-shield-icon-13-256.png" />
                      </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <ImageView fitHeight="66.0" fitWidth="66.0" layoutX="175.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/ibooks_logo.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-                  <ImageView fitHeight="66.0" fitWidth="66.0" layoutX="272.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/notification.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-                  <Label layoutX="26.0" layoutY="187.0" text="Chats" />
-                  <Label layoutX="114.0" layoutY="187.0" text="Calls" />
-                  <Label layoutX="185.0" layoutY="187.0" text="Contacts" />
-                  <Label layoutX="273.0" layoutY="187.0" text="Notification" />
-                  <Label layoutX="89.0" layoutY="32.0" text="Neli Zarkova">
+                  <Label layoutX="107.0" layoutY="187.0" text="Chats" textFill="#9a7f3c" />
+                  <Label layoutX="17.0" layoutY="17.0" text="Neli Zarkova" textFill="#bfb52d">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="231.0" layoutY="33.0" text="Settings" textFill="#827f7f">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Label>
-                  <Label layoutX="304.0" layoutY="34.0" text="Logout" textFill="#8a8484">
+                  <Label layoutX="294.0" layoutY="19.0" text="Logout" textFill="#5f325e">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -84,88 +48,54 @@
                   </Label>
                   <ImageView fitHeight="38.0" fitWidth="30.0" layoutX="315.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../icons/search.png" />
+                        <Image url="@../icons/917-9178843_search-purple-icon-magnifying-glass-png.png" />
                      </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <TextField layoutX="3.0" layoutY="90.0" prefHeight="26.0" prefWidth="305.0" />
+                  <TextField layoutX="15.0" layoutY="90.0" prefHeight="26.0" prefWidth="294.0" />
+                  <ImageView fitHeight="66.0" fitWidth="66.0" layoutX="14.0" layoutY="121.0" onMouseClicked="#show_friends" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/miller-systems-intranets-extranets-and-portals-purple-people-png-200_200.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Label layoutX="28.0" layoutY="187.0" text="Friends" textFill="#9a7f3c" />
+                  <Label layoutX="163.0" layoutY="187.0" text="Add New Contacts" textFill="#9a7f3c" />
+                  <ImageView fitHeight="66.0" fitWidth="66.0" layoutX="276.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/delete.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Label layoutX="269.0" layoutY="187.0" text="Delete Contact" textFill="#9a7f3c" />
+                  <ImageView fitHeight="26.0" fitWidth="20.0" layoutX="212.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/add2-.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
-            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="81.0" prefWidth="80.0" style="-fx-background-color: F5F5F5;">
-               <children>
-                  <ImageView fitHeight="71.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/womenIco.png" />
-                     </image>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </ImageView>
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="81.0" prefWidth="80.0" style="-fx-background-color: F5F5F5;">
-               <children>
-                  <ImageView fitHeight="66.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/icoM.png" />
-                     </image>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </ImageView>
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="81.0" prefWidth="80.0" style="-fx-background-color: F5F5F5;">
-               <children>
-                  <ImageView fitHeight="66.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/icoM.png" />
-                     </image>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </ImageView>
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="81.0" prefWidth="80.0" style="-fx-background-color: F5F5F5;">
-               <children>
-                  <ImageView fitHeight="71.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/womenIco.png" />
-                     </image>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </ImageView>
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="81.0" prefWidth="80.0" style="-fx-background-color: F5F5F5;">
-               <children>
-                  <ImageView fitHeight="71.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/womenIco.png" />
-                     </image>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </ImageView>
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="81.0" prefWidth="80.0" style="-fx-background-color: F5F5F5;">
-               <children>
-                  <ImageView fitHeight="66.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/icoM.png" />
-                     </image>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </ImageView>
-               </children>
-            </VBox>
+            <ListView fx:id="friendsList" prefHeight="488.0" prefWidth="358.0" style="-fx-background-color: #EAEAEA;" />
          </children>
       </VBox>
+      <AnchorPane fx:id="show_contacts" layoutX="360.0" prefHeight="747.0" prefWidth="397.0" visible="false">
+         <children>
+            <TextField layoutX="16.0" layoutY="16.0" prefHeight="26.0" prefWidth="336.0" />
+            <ImageView fitHeight="26.0" fitWidth="38.0" layoutX="357.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/917-9178843_search-purple-icon-magnifying-glass-png.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

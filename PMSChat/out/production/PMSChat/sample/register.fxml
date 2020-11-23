@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Register">
    <children>
       <Label alignment="CENTER" layoutX="16.0" layoutY="83.0" text="Registration Form" textFill="#aa9346">
@@ -28,14 +27,14 @@
             <Image url="@../icons/a7062be5b0c85463c8aed9e2b78cdb60.png" />
          </image>
       </ImageView>
-      <TextField layoutX="129.0" layoutY="246.0" prefHeight="26.0" prefWidth="246.0" />
-      <TextField layoutX="129.0" layoutY="294.0" prefHeight="26.0" prefWidth="246.0" />
-      <TextField layoutX="130.0" layoutY="338.0" prefHeight="26.0" prefWidth="246.0" />
-      <Label layoutX="26.0" layoutY="250.0" text="Enter Username" textFill="#a79520" />
+      <TextField fx:id="last_name" layoutX="129.0" layoutY="246.0" prefHeight="26.0" prefWidth="246.0" />
+      <TextField fx:id="email_reg" layoutX="129.0" layoutY="294.0" prefHeight="26.0" prefWidth="246.0" />
+      <TextField fx:id="password_reg" layoutX="130.0" layoutY="338.0" prefHeight="26.0" prefWidth="246.0" />
+      <Label layoutX="26.0" layoutY="250.0" text="Last Name" textFill="#a79520" />
       <Label layoutX="26.0" layoutY="298.0" text="Email" textFill="#a79520" />
       <Label layoutX="26.0" layoutY="342.0" text="Password" textFill="#a79520" />
       <Label layoutX="26.0" layoutY="388.0" text="Confirm Password" textFill="#a79520" />
-      <Button layoutX="20.0" layoutY="471.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="360.0" style="-fx-background-color: #310E37;" text="Register" textFill="#daae0e">
+      <Button layoutX="20.0" layoutY="471.0" mnemonicParsing="false" onMouseClicked="#user_registration" prefHeight="48.0" prefWidth="360.0" style="-fx-background-color: #310E37;" text="Register" textFill="#daae0e">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -43,6 +42,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <PasswordField layoutX="130.0" layoutY="383.0" prefHeight="26.0" prefWidth="246.0" />
+      <PasswordField fx:id="confirm_pass_reg" layoutX="130.0" layoutY="383.0" prefHeight="26.0" prefWidth="246.0" />
+      <Label layoutX="26.0" layoutY="209.0" text="Fisrt Name" textFill="#a79520" />
+      <TextField fx:id="first_name" layoutX="129.0" layoutY="204.0" prefHeight="26.0" prefWidth="246.0" />
+      <Label fx:id="label_fn" layoutX="129.0" layoutY="230.0" text="Label" textFill="#df3737" visible="false" />
+      <Label fx:id="label_ln" layoutX="129.0" layoutY="272.0" text="Label" textFill="#df3737" visible="false" />
+      <Label fx:id="label_email_reg" layoutX="129.0" layoutY="320.0" text="Label" textFill="#df3737" visible="false" />
+      <Label fx:id="label_pass" layoutX="130.0" layoutY="364.0" text="Label" textFill="#df3737" visible="false" />
+      <Label fx:id="label_cofirmpass" layoutX="130.0" layoutY="409.0" text="Label" textFill="#df3737" visible="false" />
    </children>
 </AnchorPane>

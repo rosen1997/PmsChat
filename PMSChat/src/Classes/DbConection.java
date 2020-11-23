@@ -8,7 +8,7 @@ public class DbConection implements IDbConnection
 {
     private Connection conn = null;
     String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    private final String DB_URL = "jdbc:sqlserver://;servername=DESKTOP-JCRR398\\PROJECTSSERVER;databaseName=ChatAppDb;integratedSecurity=true;authenticationScheme=JavaKerberos";
+    private final String DB_URL = "jdbc:sqlserver://;servername=LAPTOP-UCG8FSAC\\NZSQLSERVER;databaseName=PMSChat;integratedSecurity=true;authenticationScheme=NativeAuthentication";
 
     @Override
     public String TestServerConnection()
@@ -59,7 +59,7 @@ public class DbConection implements IDbConnection
             Statement stmt = conn.createStatement();
             ResultSet rs;
 
-            rs = stmt.executeQuery("SELECT * FROM Users WHERE Email = "+email+" and Password = "+password);
+            rs = stmt.executeQuery("SELECT * FROM Users WHERE Email = '"+email+"' and Password = '"+password+"'");
             while (rs.next()) {
                 return new User(rs.getInt("Id"),rs.getString("FirstName"),rs.getString("LastName"),rs.getString("Email"),rs.getBoolean("LoggedIn"));
             }

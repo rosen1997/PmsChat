@@ -1,5 +1,7 @@
 package Classes;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
@@ -59,7 +61,13 @@ public class DbConection implements IDbConnection
             Statement stmt = conn.createStatement();
             ResultSet rs;
 
-            rs = stmt.executeQuery("SELECT * FROM Users WHERE Email = '"+email+"' and Password = '"+password+"'");
+            String passwordHashMd5 = this.HashMd5(password);
+            if(passwordHashMd5==null)
+            {
+                //throw exception
+            }
+
+            rs = stmt.executeQuery("SELECT * FROM Users WHERE Email = '"+email+"' and Password = '"+passwordHashMd5+"'");
             while (rs.next()) {
                 User user = new User(rs.getInt("Id"),rs.getString("FirstName"),rs.getString("LastName"),rs.getString("Email"),true);
                 stmt.executeQuery("UPDATE Users SET LoggedIn="+1+" WHERE Id="+user.Id);
@@ -98,7 +106,13 @@ public class DbConection implements IDbConnection
             Statement stmt = conn.createStatement();
             ResultSet rs;
 
-            rs = stmt.executeQuery("INSERT INTO Users VALUES('"+user.FirstName+"','"+user.LastName+"','"+user.Email+"',"+user.LoggedIn+",'"+user.Password+ "')");
+            String passwordHashMd5 = this.HashMd5(user.Password);
+            if(passwordHashMd5==null)
+            {
+                //throw exception
+            }
+
+            rs = stmt.executeQuery("INSERT INTO Users VALUES('"+user.FirstName+"','"+user.LastName+"','"+user.Email+"',"+user.LoggedIn+",'"+passwordHashMd5+ "')");
         }
         catch (SQLException ex)
         {
@@ -180,6 +194,32 @@ public class DbConection implements IDbConnection
         catch (SQLException ex)
         {
 
+        }
+        return null;
+    }
+
+    private String HashMd5(String password)
+    {
+        try {
+            String generatedPassword = null;
+            // Create MessageDigest instance for MD5
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            //Add password bytes to digest
+            md.update(password.getBytes());
+            //Get the hash's bytes
+            byte[] bytes = md.digest();
+            //This bytes[] has bytes in decimal format;
+            //Convert it to hexadecimal format
+            StringBuilder sb = new StringBuilder();
+            for(int i=0; i< bytes.length ;i++)
+            {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            generatedPassword = sb.toString();
+        }
+        catch (NoSuchAlgorithmException e)
+        {
+            //rethrow
         }
         return null;
     }

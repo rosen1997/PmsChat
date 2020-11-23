@@ -59,7 +59,7 @@ public class DbConection implements IDbConnection
             Statement stmt = conn.createStatement();
             ResultSet rs;
 
-            rs = stmt.executeQuery("SELECT * FROM Users WHERE Email = "+email+" and Password = "+password);
+            rs = stmt.executeQuery("SELECT * FROM Users WHERE Email = '"+email+"' and Password = '"+password+"'");
             while (rs.next()) {
                 User user = new User(rs.getInt("Id"),rs.getString("FirstName"),rs.getString("LastName"),rs.getString("Email"),true);
                 stmt.executeQuery("UPDATE Users SET LoggedIn="+1+" WHERE Id="+user.Id);
@@ -98,7 +98,7 @@ public class DbConection implements IDbConnection
             Statement stmt = conn.createStatement();
             ResultSet rs;
 
-            rs = stmt.executeQuery("INSERT INTO Users VALUES("+user.FirstName+","+user.LastName+","+user.Email+","+user.LoggedIn+","+user.Password+ ")");
+            rs = stmt.executeQuery("INSERT INTO Users VALUES('"+user.FirstName+"','"+user.LastName+"','"+user.Email+"',"+user.LoggedIn+",'"+user.Password+ "')");
         }
         catch (SQLException ex)
         {
@@ -171,7 +171,7 @@ public class DbConection implements IDbConnection
             Statement stmt = conn.createStatement();
             ResultSet rs;
 
-            rs = stmt.executeQuery("SELECT * FROM USERS WHERE FirstName="+name);
+            rs = stmt.executeQuery("SELECT * FROM USERS WHERE FirstName='"+name+"'");
             while (rs.next()) {
                 friends.add(new User(rs.getInt("Id"),rs.getString("FirstName"),rs.getString("LastName"),rs.getString("Email"),rs.getBoolean("LoggedIn")));
             }

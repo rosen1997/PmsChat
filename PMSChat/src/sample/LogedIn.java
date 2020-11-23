@@ -28,7 +28,7 @@ public class LogedIn {
         List<User> friends = connection.GetFriends(user.Id);
         for (User friend: friends)
         {
-            friendsList.getItems().add(friend.FirstName.toString()+" "+friend.LastName.toString());
+            friendsList.getItems().add(friend);
         }
     }
 }

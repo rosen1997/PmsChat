@@ -10,7 +10,8 @@ public class DbConection implements IDbConnection
 {
     private Connection conn = null;
     String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    private final String DB_URL = "jdbc:sqlserver://;servername=DESKTOP-JCRR398\\PROJECTSSERVER;databaseName=ChatAppDb;integratedSecurity=true;authenticationScheme=NativeAuthentication";
+    //private final String DB_URL = "jdbc:sqlserver://;servername=DESKTOP-JCRR398\\PROJECTSSERVER;databaseName=ChatAppDb;integratedSecurity=true;authenticationScheme=NativeAuthentication";
+    private final String DB_URL = "jdbc:sqlserver://;servername=LAPTOP-UCG8FSAC\\NZSQLSERVER;databaseName=PMSChat;integratedSecurity=true;authenticationScheme=NativeAuthentication";
 
     @Override
     public String TestServerConnection()
@@ -70,7 +71,7 @@ public class DbConection implements IDbConnection
             rs = stmt.executeQuery("SELECT * FROM Users WHERE Email = '"+email+"' and Password = '"+passwordHashMd5+"'");
             while (rs.next()) {
                 User user = new User(rs.getInt("Id"),rs.getString("FirstName"),rs.getString("LastName"),rs.getString("Email"),true);
-                stmt.executeQuery("UPDATE Users SET LoggedIn="+1+" WHERE Id="+user.Id);
+                stmt.executeUpdate("UPDATE Users SET LoggedIn="+1+" WHERE Id="+user.Id);
                 return user;
             }
         }
@@ -87,9 +88,8 @@ public class DbConection implements IDbConnection
         try
         {
             Statement stmt = conn.createStatement();
-            ResultSet rs;
 
-            rs = stmt.executeQuery("UPDATE Users SET LoggedIn="+0+" WHERE Id="+Id);
+            stmt.executeUpdate("UPDATE Users SET LoggedIn="+0+" WHERE Id="+Id);
             conn.close();
         }
         catch (SQLException ex)
@@ -104,7 +104,6 @@ public class DbConection implements IDbConnection
         try
         {
             Statement stmt = conn.createStatement();
-            ResultSet rs;
 
             String passwordHashMd5 = this.HashMd5(user.Password);
             if(passwordHashMd5==null)
@@ -112,7 +111,7 @@ public class DbConection implements IDbConnection
                 //throw exception
             }
 
-            rs = stmt.executeQuery("INSERT INTO Users VALUES('"+user.FirstName+"','"+user.LastName+"','"+user.Email+"',"+user.LoggedIn+",'"+passwordHashMd5+ "')");
+            stmt.execute("INSERT INTO Users VALUES('"+user.FirstName+"','"+user.LastName+"','"+user.Email+"',"+user.LoggedIn+",'"+passwordHashMd5+ "')");
         }
         catch (SQLException ex)
         {
@@ -126,9 +125,8 @@ public class DbConection implements IDbConnection
         try
         {
             Statement stmt = conn.createStatement();
-            ResultSet rs;
 
-            rs = stmt.executeQuery("INSERT INTO FriendsList VALUES("+userId+","+friendId+ ")");
+            stmt.execute("INSERT INTO FriendsList VALUES("+userId+","+friendId+ ")");
         }
         catch (SQLException ex)
         {
@@ -142,9 +140,8 @@ public class DbConection implements IDbConnection
         try
         {
             Statement stmt = conn.createStatement();
-            ResultSet rs;
 
-            rs = stmt.executeQuery("DELETE FROM FriendsList WHERE UserId="+userId+" AND "+"FriendId= "+friendId);
+            stmt.execute("DELETE FROM FriendsList WHERE UserId="+userId+" AND "+"FriendId= "+friendId);
         }
         catch (SQLException ex)
         {
@@ -216,6 +213,7 @@ public class DbConection implements IDbConnection
                 sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
             }
             generatedPassword = sb.toString();
+            return generatedPassword;
         }
         catch (NoSuchAlgorithmException e)
         {

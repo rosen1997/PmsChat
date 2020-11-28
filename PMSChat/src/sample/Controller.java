@@ -1,9 +1,8 @@
 package sample;
 
-import Classes.DbConection;
+import Classes.DbConnection;
 import Classes.IDbConnection;
 import Classes.User;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,7 +13,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.security.cert.PolicyNode;
 
 public class Controller {
 
@@ -40,8 +38,16 @@ public class Controller {
             password_label.setText("The field is empty");
         }
         else {
-            IDbConnection connection= new DbConection();
-            String a=connection.TestServerConnection();
+            IDbConnection connection = null;
+            try
+            {
+                connection = DbConnection.getInstance();
+            }
+            catch (Exception e)
+            {
+                //show message
+                return;
+            }
 
             User user = connection.LogIn(emailField.getText(), passwordField.getText());
             if(user==null)

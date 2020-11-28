@@ -6,12 +6,36 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
 
-public class DbConection implements IDbConnection
+public class DbConnection implements IDbConnection
 {
     private Connection conn = null;
     String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     //private final String DB_URL = "jdbc:sqlserver://;servername=DESKTOP-JCRR398\\PROJECTSSERVER;databaseName=ChatAppDb;integratedSecurity=true;authenticationScheme=NativeAuthentication";
     private final String DB_URL = "jdbc:sqlserver://;servername=LAPTOP-UCG8FSAC\\NZSQLSERVER;databaseName=PMSChat;integratedSecurity=true;authenticationScheme=NativeAuthentication";
+
+    private static DbConnection instance;
+    private DbConnection()
+    {
+        try
+        {
+            DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
+            conn = DriverManager.getConnection(DB_URL);
+
+        }
+        catch (SQLException ex)
+        {
+            //rethrow
+        }
+    }
+
+    public static synchronized DbConnection getInstance()
+    {
+        if(instance==null)
+        {
+            instance=new DbConnection();
+        }
+        return instance;
+    }
 
     @Override
     public String TestServerConnection()

@@ -1,7 +1,5 @@
 package sample;
 
-import Classes.DbConection;
-import Classes.IDbConnection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

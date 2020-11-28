@@ -37,8 +37,7 @@ public class DbConnection implements IDbConnection
         return instance;
     }
 
-    @Override
-    public String TestServerConnection()
+    private String TestServerConnection()
     {
         try
         {

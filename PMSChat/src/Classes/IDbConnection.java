@@ -4,7 +4,6 @@ import java.util.List;
 
 public interface IDbConnection
 {
-    String TestServerConnection();
     boolean IsUserLoggedIn(int Id);
     User LogIn(String email, String password);
     void Register(User user);

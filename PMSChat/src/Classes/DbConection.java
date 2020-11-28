@@ -127,6 +127,7 @@ public class DbConection implements IDbConnection
             Statement stmt = conn.createStatement();
 
             stmt.execute("INSERT INTO FriendsList VALUES("+userId+","+friendId+ ")");
+            stmt.execute("INSERT INTO FriendsList VALUES("+friendId+","+userId+ ")");
         }
         catch (SQLException ex)
         {
@@ -142,6 +143,7 @@ public class DbConection implements IDbConnection
             Statement stmt = conn.createStatement();
 
             stmt.execute("DELETE FROM FriendsList WHERE UserId="+userId+" AND "+"FriendId= "+friendId);
+            stmt.execute("DELETE FROM FriendsList WHERE UserId="+friendId+" AND "+"FriendId= "+userId);
         }
         catch (SQLException ex)
         {
